@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useParams, useNavigate} from "react-router-dom";
 import {readCard, updateCard} from "../utils/api/index";
 
@@ -6,13 +6,33 @@ import {readCard, updateCard} from "../utils/api/index";
 export const EditCard = () => {
   const navigate = useNavigate();
   const {deckId, cardId } = useParams();
-  const card = readCard(cardId);
+
+  const [card, setCard] = useState({ front: "", back: "" });
+
+  useEffect(() => {
+    const fetchCard = async () => {
+      const loadedCard = await readCard(cardId);
+      setCard(loadedCard);
+    };
+
+    fetchCard();
+  }, [cardId]);
+
   
   const initialFormState = {
     front: card.front,
     back: card.back,
   };
   const [formData, setFormData] = useState({ ...initialFormState });
+
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      front: card.front,
+      back: card.back,
+    });
+  }, [card]);
+
   const handleChange = ({ target }) => {
     setFormData({
       ...formData,
@@ -20,10 +40,16 @@ export const EditCard = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const newCard = {"id": cardId, "front": formData.front, "back": formData.back, "deckId": deckId};
-    updateCard(newCard);
+    const updatedCard = {
+      id: cardId,
+      front: formData.front,
+      back: formData.back,
+      deckId: deckId,
+    };
+    const newCard = await updateCard(updatedCard);
+    console.log(newCard);
     navigate(`/decks/${deckId}`);
   };
   

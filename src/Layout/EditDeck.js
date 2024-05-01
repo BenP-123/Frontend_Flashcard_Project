@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useParams, useNavigate} from "react-router-dom";
 import {readDeck, updateDeck} from "../utils/api/index";
 
@@ -6,13 +6,34 @@ import {readDeck, updateDeck} from "../utils/api/index";
 export const EditDeck = () => {
   const navigate = useNavigate();
   const {deckId} = useParams();
-  const deck = readDeck(deckId);
+
+  const [deck, setDeck] = useState({name: "", description: ""});
+
+  useEffect(() => {
+    const fetchDeck = async () => {
+      const loadedDeck = await readDeck(deckId);
+      setDeck(loadedDeck);
+    };
+
+    fetchDeck();
+  }, [deckId]);
   
+
   const initialFormState = {
     name: deck.name,
     description: deck.description,
   };
+  
   const [formData, setFormData] = useState({ ...initialFormState });
+
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      name: deck.name,
+      description: deck.description,
+    });
+  }, [deck]);
+
   const handleChange = ({ target }) => {
     setFormData({
       ...formData,
@@ -20,10 +41,10 @@ export const EditDeck = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const updatedDeck = {"deckId": deckId, "name": formData.name, "description": formData.description};
-    updateDeck(updatedDeck);
+    const updatedDeck = {"id": deckId, "name": formData.name, "description": formData.description};
+    await updateDeck(updatedDeck);
     navigate(`/decks/${deckId}`);
   };
   
@@ -47,7 +68,7 @@ export const EditDeck = () => {
         </label>
         <br />
         <label htmlFor="description">
-          description
+          Description
           <textarea
             id="description"
             type="text"

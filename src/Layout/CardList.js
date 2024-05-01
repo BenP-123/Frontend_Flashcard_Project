@@ -1,21 +1,35 @@
-import { useParams, useNavigate} from "react-router-dom";
-import Card from "./Card.js";
-import {readDeck} from "../utils/api/index";
+import {deleteCard} from "../utils/api/index";
+import {useNavigate} from "react-router-dom";
 
-export const CardList = () => {
+export const CardList = ({ cards = []}) => {
+
   const navigate = useNavigate();
-  const {deckId} = useParams();
-  const deck = readDeck(deckId);
-  const cards = deck.cards.map((card) => {
-    <Card card={card}/>
-  });
+  
+  const handleDelete = async (cardId) => {
+    const result = window.confirm("Delete this card?\n\nYou will not be able to recover it." );
+    if (result) {
+      await deleteCard(cardId);
+    }
+  };
+  
+  function handleEdit(deckId, cardId) {
+    navigate(`/decks/${deckId}/cards/${cardId}/edit`);
+  };
+
+
   return (
-    <div>
-      <ul>
-        {cards}
-      </ul>
-    </div>
+    <ul>
+      {cards.map((card) => (
+        <li key={card.id}>
+          <p>{card.front}</p>
+          <p>{card.back}</p>
+          <button onClick={() => handleDelete(card.id)}>Delete</button>
+          <button onClick={() => handleEdit(card.deckId, card.id)}>Edit</button>
+        </li>
+      ))}
+    </ul>
   );
+
 }
 
 export default CardList;

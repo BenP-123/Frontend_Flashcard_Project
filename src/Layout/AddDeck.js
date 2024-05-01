@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import { useParams, useNavigate} from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import { useNavigate} from "react-router-dom";
 import {createDeck, listDecks} from "../utils/api/index";
 
 
@@ -10,6 +10,8 @@ export const AddDeck = () => {
     description: "",
   };
   const [formData, setFormData] = useState({ ...initialFormState });
+  const [decks, setDecks] = useState([]);
+
   const handleChange = ({ target }) => {
     setFormData({
       ...formData,
@@ -17,20 +19,27 @@ export const AddDeck = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const newDeck = {"name": formData.name, "description": formData.description};
-    createDeck(newDeck);
+    const createdDeck = await createDeck(newDeck);
     setFormData({ ...initialFormState });
-    const decks = Promise.resolve(listDecks());
-    const curDeck = decks.find((deck) => deck.name == formData.name);
     setFormData(initialFormState);
-    navigate(`/decks/${curDeck.id}`);
+    navigate(`/decks/${createdDeck.id}`);
   };
   
   function handleCancel() {
     navigate(`/`);
   }
+
+  useEffect(() => {
+    const fetchDecks = async () => {
+      const loadedDecks = await listDecks();
+      setDecks(loadedDecks);
+    };
+
+    fetchDecks();
+  }, [formData]);
 
   return (
     <div>

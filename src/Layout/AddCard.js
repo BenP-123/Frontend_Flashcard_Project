@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useParams, useNavigate} from "react-router-dom";
 import {readDeck, createCard} from "../utils/api/index";
 
@@ -6,7 +6,17 @@ import {readDeck, createCard} from "../utils/api/index";
 export const EditCard = () => {
   const navigate = useNavigate();
   const {deckId, cardId } = useParams();
-  const deck = readDeck(deckId);
+
+  const [deck, setDeck] = useState([]);
+
+  useEffect(() => {
+    const fetchDecks = async () => {
+      const loadedDeck = await readDeck(deckId);
+      setDeck(loadedDeck);
+    };
+
+    fetchDecks();
+  }, []);
   
   const initialFormState = {
     front: "",
@@ -20,10 +30,10 @@ export const EditCard = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const newCard = {"id": cardId, "front": formData.front, "back": formData.back, "deckId": deckId};
-    createCard(deckId, newCard);
+    await createCard(deckId, newCard);
     setFormData({ ...initialFormState });
   };
   

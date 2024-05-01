@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useParams, useNavigate} from "react-router-dom";
 import {readDeck, deleteDeck} from "../utils/api/index";
 import CardList from "./CardList.js";
@@ -7,7 +7,16 @@ import CardList from "./CardList.js";
 export const Deck = () => {
   const navigate = useNavigate();
   const {deckId} = useParams();
-  const deck = readDeck(deckId);
+  const [deck, setDeck] = useState([]);
+
+  useEffect(() => {
+    const fetchDecks = async () => {
+      const loadedDeck = await readDeck(deckId);
+      setDeck(loadedDeck);
+    };
+
+    fetchDecks();
+  }, []);
   
   function handleEdit() {
     navigate(`/decks/${deckId}/edit`);
@@ -38,7 +47,7 @@ export const Deck = () => {
       <button onClick={handleAddCards}>Add Cards</button>
       <button onClick={handleDelete}>Delete</button>
       <h1>Cards</h1>
-      <CardList />
+      <CardList cards = {deck.cards}/>
     </div>
     
   );

@@ -16,22 +16,22 @@
       "id": 3
     },
     {
-      "name": "tester",
-      "description": "this is a test",
+      "name": "new deck",
+      "description": "this is a new deck",
       "id": 4
     },
     {
-      "name": "tester",
-      "description": "this is a test",
-      "id": 5
+      "id": 5,
+      "name": "temp 1",
+      "description": "temp deck"
     }
   ],
   "cards": [
     {
       "id": 1,
-      "front": "Differentiate between Real DOM and Virtual DOM.",
-      "back": "Virtual DOM updates are faster but do not directly update the HTML",
-      "deckId": 1
+      "front": "test",
+      "back": " test back",
+      "deckId": "1"
     },
     {
       "id": 2,
@@ -63,6 +63,132 @@
       "back": "b",
       "deckId": 1,
       "id": 7
+    },
+    {
+      "front": "test card front",
+      "back": "test card back",
+      "deckId": 1,
+      "id": 8
+    },
+    {
+      "id": 9,
+      "front": "3",
+      "back": "3",
+      "deckId": "1"
+    },
+    {
+      "front": "test card",
+      "back": "back of test card",
+      "deckId": 2,
+      "id": 11
+    },
+    {
+      "front": "add card test front",
+      "back": "add card test back",
+      "deckId": 2,
+      "id": 12
+    },
+    {
+      "id": 13,
+      "front": "3",
+      "back": "3",
+      "deckId": "1"
+    },
+    {
+      "id": 14,
+      "front": "4",
+      "back": "4",
+      "deckId": "1"
+    },
+    {
+      "id": 15,
+      "front": "3",
+      "back": "3",
+      "deckId": "1"
+    },
+    {
+      "id": 16,
+      "front": "4",
+      "back": "4",
+      "deckId": "1"
+    },
+    {
+      "id": 17,
+      "front": "4",
+      "back": "4",
+      "deckId": "1"
+    },
+    {
+      "id": 18,
+      "front": "3",
+      "back": "3",
+      "deckId": "1"
+    },
+    {
+      "id": 19,
+      "front": "4",
+      "back": "4",
+      "deckId": "1"
+    },
+    {
+      "id": 20,
+      "front": "5",
+      "back": "5",
+      "deckId": "1"
+    },
+    {
+      "id": 21,
+      "front": "test card front 1",
+      "back": "test card back 2",
+      "deckId": "3"
+    },
+    {
+      "id": 22,
+      "front": "test card front 1",
+      "back": "test card back 2",
+      "deckId": "3"
+    },
+    {
+      "id": 23,
+      "front": "11",
+      "back": "22",
+      "deckId": "3"
+    },
+    {
+      "id": 24,
+      "front": "11",
+      "back": "22",
+      "deckId": "3"
+    },
+    {
+      "id": 25,
+      "front": "33",
+      "back": "44",
+      "deckId": "3"
+    },
+    {
+      "front": "123",
+      "back": "456",
+      "deckId": 3,
+      "id": 26
+    },
+    {
+      "id": 27,
+      "front": "abcd",
+      "back": "defg",
+      "deckId": "3"
+    },
+    {
+      "id": 28,
+      "front": "1234",
+      "back": "4565",
+      "deckId": "5"
+    },
+    {
+      "id": 29,
+      "front": "123",
+      "back": "345",
+      "deckId": "5"
     }
   ]
 }
