@@ -2,193 +2,28 @@
   "decks": [
     {
       "id": 1,
-      "name": "Rendering in React",
-      "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation. "
-    },
-    {
-      "name": "React Router",
-      "description": "React Router is a collection of navigational components that compose declaratively with your application.",
-      "id": 2
-    },
-    {
-      "name": "test",
-      "description": "this is a test",
-      "id": 3
-    },
-    {
-      "name": "new deck",
-      "description": "this is a new deck",
-      "id": 4
-    },
-    {
-      "id": 5,
-      "name": "temp 1",
-      "description": "temp deck"
+      "name": "12",
+      "description": "1 description3"
     }
   ],
   "cards": [
     {
       "id": 1,
-      "front": "test",
-      "back": " test back",
-      "deckId": "1"
-    },
-    {
-      "id": 2,
-      "front": "How do you modify the state of a different React component?",
-      "back": "Not at all! State is visible to the component only.",
-      "deckId": 1
-    },
-    {
-      "id": 3,
-      "front": "How do you pass data 'down' to a React child component?",
-      "back": "As properties or props",
-      "deckId": 1
-    },
-    {
-      "front": "What path will match the follow Route?\n<Route>\n  <NotFound />\n</Route>",
-      "back": "All paths. A route with no path matches all URL's",
-      "deckId": 2,
-      "id": 4
-    },
-    {
-      "front": "What does <Switch> do?",
-      "back": "Renders the first matching child <Route> ",
-      "deckId": 2,
-      "id": 5
-    },
-    {
-      "cards": [],
-      "front": "b",
-      "back": "b",
-      "deckId": 1,
-      "id": 7
-    },
-    {
-      "front": "test card front",
-      "back": "test card back",
-      "deckId": 1,
-      "id": 8
-    },
-    {
-      "id": 9,
-      "front": "3",
-      "back": "3",
-      "deckId": "1"
-    },
-    {
-      "front": "test card",
-      "back": "back of test card",
-      "deckId": 2,
-      "id": 11
-    },
-    {
-      "front": "add card test front",
-      "back": "add card test back",
-      "deckId": 2,
-      "id": 12
-    },
-    {
-      "id": 13,
-      "front": "3",
-      "back": "3",
-      "deckId": "1"
-    },
-    {
-      "id": 14,
-      "front": "4",
-      "back": "4",
-      "deckId": "1"
-    },
-    {
-      "id": 15,
-      "front": "3",
-      "back": "3",
-      "deckId": "1"
-    },
-    {
-      "id": 16,
-      "front": "4",
-      "back": "4",
-      "deckId": "1"
-    },
-    {
-      "id": 17,
-      "front": "4",
-      "back": "4",
-      "deckId": "1"
-    },
-    {
-      "id": 18,
-      "front": "3",
-      "back": "3",
-      "deckId": "1"
-    },
-    {
-      "id": 19,
-      "front": "4",
-      "back": "4",
-      "deckId": "1"
-    },
-    {
-      "id": 20,
-      "front": "5",
-      "back": "5",
-      "deckId": "1"
-    },
-    {
-      "id": 21,
-      "front": "test card front 1",
-      "back": "test card back 2",
-      "deckId": "3"
-    },
-    {
-      "id": 22,
-      "front": "test card front 1",
-      "back": "test card back 2",
-      "deckId": "3"
-    },
-    {
-      "id": 23,
       "front": "11",
       "back": "22",
-      "deckId": "3"
+      "deckId": "1"
     },
     {
-      "id": 24,
-      "front": "11",
-      "back": "22",
-      "deckId": "3"
+      "front": "2",
+      "back": "3",
+      "deckId": 1,
+      "id": 2
     },
     {
-      "id": 25,
-      "front": "33",
-      "back": "44",
-      "deckId": "3"
-    },
-    {
-      "front": "123",
-      "back": "456",
-      "deckId": 3,
-      "id": 26
-    },
-    {
-      "id": 27,
-      "front": "abcd",
-      "back": "defg",
-      "deckId": "3"
-    },
-    {
-      "id": 28,
-      "front": "1234",
-      "back": "4565",
-      "deckId": "5"
-    },
-    {
-      "id": 29,
-      "front": "123",
-      "back": "345",
-      "deckId": "5"
+      "front": "3",
+      "back": "4",
+      "deckId": 1,
+      "id": 3
     }
   ]
 }

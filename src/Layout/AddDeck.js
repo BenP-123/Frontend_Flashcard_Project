@@ -50,6 +50,7 @@ export const AddDeck = () => {
           <input
             id="name"
             type="text"
+            placeholder="Deck Name"
             name="name"
             onChange={handleChange}
             value={formData.name}
@@ -61,6 +62,7 @@ export const AddDeck = () => {
           <textarea
             id="description"
             type="text"
+            placeholder="Brief description of the deck"
             name="description"
             onChange={handleChange}
             value={formData.description}
