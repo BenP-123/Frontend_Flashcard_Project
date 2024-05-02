@@ -21,10 +21,10 @@ export const Study = () => {
   }, [deckId]);
 
   const nav = <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="/">Home</a></li>
-                  <li class="breadcrumb-item"><a href={"/decks/" + deck.id}>{deck.name}</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Study</li>
+                <ol className="breadcrumb">
+                  <li className="breadcrumb-item"><a href="/">Home</a></li>
+                  <li className="breadcrumb-item"><a href={"/decks/" + deck.id}>{deck.name}</a></li>
+                  <li className="breadcrumb-item active" aria-current="page">Study</li>
                 </ol>
               </nav>;
 
@@ -70,6 +70,7 @@ export const Study = () => {
   return (
     <div>
       <h1>Study: {deck.name}</h1>
+      <h1>{deck.name}</h1>
       <h3>Card {index+1} of {numCards}</h3>
       <Card cardId={deck.cards[index].id} handleNext={handleNext}/>
     </div>
