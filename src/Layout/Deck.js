@@ -38,8 +38,16 @@ export const Deck = () => {
     navigate(`/`);
   };
 
+  const nav = <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">{deck.name}</li>
+                </ol>
+              </nav>;
+
   return (
     <div>
+      {nav}
       <h3>{deck.name}</h3>
       <p>{deck.description}</p>
       <button onClick={handleEdit}>Edit</button>

@@ -10,7 +10,6 @@ export const AddDeck = () => {
     description: "",
   };
   const [formData, setFormData] = useState({ ...initialFormState });
-  const [decks, setDecks] = useState([]);
 
   const handleChange = ({ target }) => {
     setFormData({
@@ -23,7 +22,6 @@ export const AddDeck = () => {
     event.preventDefault();
     const newDeck = {"name": formData.name, "description": formData.description};
     const createdDeck = await createDeck(newDeck);
-    setFormData({ ...initialFormState });
     setFormData(initialFormState);
     navigate(`/decks/${createdDeck.id}`);
   };
@@ -32,17 +30,16 @@ export const AddDeck = () => {
     navigate(`/`);
   }
 
-  useEffect(() => {
-    const fetchDecks = async () => {
-      const loadedDecks = await listDecks();
-      setDecks(loadedDecks);
-    };
-
-    fetchDecks();
-  }, [formData]);
+  const nav = <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Create Deck</li>
+                </ol>
+              </nav>;
 
   return (
     <div>
+      {nav}
       <h1>Create Deck</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">

@@ -20,6 +20,14 @@ export const Study = () => {
     fetchDeck();
   }, [deckId]);
 
+  const nav = <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/">Home</a></li>
+                  <li class="breadcrumb-item"><a href={"/decks/" + deck.id}>{deck.name}</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Study</li>
+                </ol>
+              </nav>;
+
   function handleAddCards() {
     navigate(`/decks/${deckId}/cards/new`);
   };
@@ -50,6 +58,7 @@ export const Study = () => {
   if(numCards <= 2){
     return (
       <div>
+        {nav}
         <h1>Study: {deck.name}</h1>
         <h2>Not enough cards.</h2>
         <p>You need at least 3 cards to study. There are {numCards} cards in this deck.</p>

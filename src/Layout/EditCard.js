@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { useParams, useNavigate} from "react-router-dom";
-import {readCard, updateCard} from "../utils/api/index";
+import {readCard, updateCard, readDeck} from "../utils/api/index";
 
 
 export const EditCard = () => {
@@ -8,6 +8,16 @@ export const EditCard = () => {
   const {deckId, cardId } = useParams();
 
   const [card, setCard] = useState({ front: "", back: "" });
+  const [deck, setDeck] = useState({name: "", description: ""});
+
+  useEffect(() => {
+    const fetchDeck = async () => {
+      const loadedDeck = await readDeck(deckId);
+      setDeck(loadedDeck);
+    };
+
+    fetchDeck();
+  }, [deckId]);
 
   useEffect(() => {
     const fetchCard = async () => {
@@ -57,8 +67,17 @@ export const EditCard = () => {
     navigate(`/decks/${deckId}`);
   }
 
+  const nav = <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/">Home</a></li>
+                  <li class="breadcrumb-item"><a href={"/decks/" + deck.id}>{deck.name}</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Edit Card {card.id}</li>
+                </ol>
+              </nav>;
+
   return (
     <div>
+      {nav}
       <h1>Edit Card</h1>
         <form onSubmit={handleSubmit}>
         <label htmlFor="front">
