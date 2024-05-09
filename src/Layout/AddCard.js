@@ -3,7 +3,7 @@ import { useParams, useNavigate} from "react-router-dom";
 import {readDeck, createCard} from "../utils/api/index";
 
 
-export const EditCard = () => {
+export const AddCard = () => {
   const navigate = useNavigate();
   const {deckId, cardId } = useParams();
 
@@ -84,4 +84,4 @@ export const EditCard = () => {
   );
 }
 
-export default EditCard;
+export default AddCard;

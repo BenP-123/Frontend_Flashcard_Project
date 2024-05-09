@@ -1,34 +1,10 @@
 {
   "decks": [
     {
-      "id": 1,
-      "name": "12",
-      "description": "1 description3"
-    },
-    {
-      "name": "new deck",
-      "description": "new deck description",
-      "id": 2
+      "name": "2",
+      "description": "2",
+      "id": 1
     }
   ],
-  "cards": [
-    {
-      "id": 1,
-      "front": "11",
-      "back": "22",
-      "deckId": "1"
-    },
-    {
-      "id": 2,
-      "front": "3",
-      "back": "4",
-      "deckId": "1"
-    },
-    {
-      "front": "3",
-      "back": "4",
-      "deckId": 1,
-      "id": 3
-    }
-  ]
+  "cards": []
 }

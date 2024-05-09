@@ -16,7 +16,7 @@ export const Deck = () => {
     };
 
     fetchDecks();
-  }, []);
+  }, [deckId]);
   
   function handleEdit() {
     navigate(`/decks/${deckId}/edit`);
