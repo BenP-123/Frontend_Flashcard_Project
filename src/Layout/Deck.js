@@ -6,17 +6,18 @@ import CardList from "./CardList.js";
 
 export const Deck = () => {
   const navigate = useNavigate();
-  const {deckId} = useParams();
+  let {deckId} = useParams();
   const [deck, setDeck] = useState([]);
+  const [deleted, setDeleted] = useState(false);
 
   useEffect(() => {
-    const fetchDecks = async () => {
+    const fetchDeck = async () => {
       const loadedDeck = await readDeck(deckId);
       setDeck(loadedDeck);
     };
 
-    fetchDecks();
-  }, [deckId]);
+    fetchDeck();
+  }, [deckId, deleted]);
   
   function handleEdit() {
     navigate(`/decks/${deckId}/edit`);
@@ -28,6 +29,10 @@ export const Deck = () => {
   
   function handleAddCards() {
     navigate(`/decks/${deckId}/cards/new`);
+  };
+
+  function handleDeleted() {
+    setDeleted(!deleted);
   };
   
   const handleDelete =  async () => {
@@ -55,7 +60,7 @@ export const Deck = () => {
       <button onClick={handleAddCards}>Add Cards</button>
       <button onClick={handleDelete}>Delete</button>
       <h1>Cards</h1>
-      <CardList cards = {deck.cards}/>
+      <CardList cards = {deck.cards} handleDeleted={handleDeleted}/>
     </div>
     
   );

@@ -1,7 +1,7 @@
 import {deleteCard} from "../utils/api/index";
 import {useNavigate} from "react-router-dom";
 
-export const CardList = ({ cards = []}) => {
+export const CardList = ({ cards = [], handleDeleted}) => {
 
   const navigate = useNavigate();
   
@@ -9,6 +9,7 @@ export const CardList = ({ cards = []}) => {
     const result = window.confirm("Delete this card?\n\nYou will not be able to recover it." );
     if (result) {
       await deleteCard(cardId);
+      handleDeleted();
     }
   };
   

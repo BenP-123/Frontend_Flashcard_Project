@@ -1,10 +1,4 @@
 {
-  "decks": [
-    {
-      "name": "2",
-      "description": "2",
-      "id": 1
-    }
-  ],
+  "decks": [],
   "cards": []
 }
