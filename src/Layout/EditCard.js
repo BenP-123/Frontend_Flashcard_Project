@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { deleteCard, createCard, readDeck} from '../utils/api';
+import { updateCard, readDeck} from '../utils/api';
 import CardForm from "./CardForm.js";
 
 export const EditCard = () => {
@@ -17,15 +17,15 @@ export const EditCard = () => {
     fetchDeck();
   }, [deckId]);
 
-  const returnCard = async (cardFront, cardBack) => {
-    // Step 1: Delete the existing card
-    await deleteCard(cardId);
+  const deckIdInteger = parseInt(deckId);
 
-    // Step 2: Create a new card with the updated information
-    await createCard(deckId, {
+  const returnCard = async (cardFront, cardBack) => {
+
+    await updateCard({
       front: cardFront,
       back: cardBack,
-      deckId: deckId
+      id: cardId,
+      deckId: deckIdInteger
     });
 
     navigate(`/decks/${deckId}`);
