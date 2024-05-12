@@ -1,5 +1,6 @@
 import {deleteCard} from "../utils/api/index";
 import {useNavigate} from "react-router-dom";
+import React from "react";
 
 export const CardList = ({ cards = [], handleDeleted}) => {
 
